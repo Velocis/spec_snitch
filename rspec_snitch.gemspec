@@ -6,8 +6,8 @@ require 'rspec_snitch/version'
 Gem::Specification.new do |spec|
   spec.name          = "rspec_snitch"
   spec.version       = RspecSnitch::VERSION
-  spec.authors       = ["Freddy Rangel"]
-  spec.email         = ["frederick.rangel@gmail.com"]
+  spec.authors       = ["Freddy Rangel", "John Ellis"]
+  spec.email         = ["frederick.rangel@gmail.com", "john@seriouslyawesome.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
@@ -20,4 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "webmock"
 end

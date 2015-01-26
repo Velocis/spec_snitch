@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rspec_snitch.gemspec
 gemspec
+gem 'octokit', '~> 3.7.0'
+gem 'thor', '~> 0.19.1'

@@ -1,12 +1,14 @@
 module RspecSnitch
   class PendingReporter
-    def initialize(config, options)
-      @service      ||= ExternalServiceAdapter.new(options[:repository], options[:access_token])
+    def initialize(repo, config, options)
+      @service      ||= ExternalServiceAdapter.new(repo, ENV['RSPEC_SNITCH_TOKEN'])
       @examples     ||= config.instance_variable_get(:@reporter)
       @issue_titles ||= @service.list_issue_names
 
       report_examples if reportable_examples.any? && user_wants_report?
     end
+
+    alias_method :snitch_to, :new
 
     private
 
@@ -21,9 +23,13 @@ module RspecSnitch
     end
 
     def user_wants_report?
-      thor = Thor::Shell::Basic.new
-      question = "#{pluralize(reportable_examples.size, 'issue')} to report. Snitch to GitHub? (y/n):"
-      thor.yes?(question)
+      if options[:ask] == true
+        thor = Thor::Shell::Basic.new
+        question = "#{pluralize(reportable_examples.size, 'issue')} to report. Snitch to GitHub? (y/n):"
+        thor.yes?(question)
+      else
+        true
+      end
     end
   end
 end

@@ -6,7 +6,7 @@ describe RspecSnitch do
   let(:token)  { ENV['GITHUB_TOKEN'] }
   let(:repo)   { 'freddyrangel/snitch-example' }
   let(:config) { RSpec::Core::Configuration.new }
-  let(:snitch) { RspecSnitch.new(config, repository: repo, access_token: token) }
+  let(:snitch) { RspecSnitch.new(repo, config, ask: false) }
 
   describe 'create pending issues', :vcr do
     context 'with one new pending example' do

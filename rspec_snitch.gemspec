@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RspecSnitch::VERSION
   spec.authors       = ["Freddy Rangel", "John Ellis"]
   spec.email         = ["frederick.rangel@gmail.com", "john@seriouslyawesome.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Turn your pending specs into GitHub issues.}
+  spec.description   = %q{Using only a GitHub API access token and the name of your repo, RSpecSnitch will create GitHub issues using the full descriptions of your pending specs.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

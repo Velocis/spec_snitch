@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe RspecSnitch::PendingSpecReporter do
+describe RspecSnitch::PendingReporter do
   describe 'report examples', :vcr do
     let(:token)  { ENV['GITHUB_TOKEN'] }
     let(:repo)   { 'freddyrangel/snitch-example' }
     let(:config) { double }
-    let(:report) { RspecSnitch::PendingSpecReporter.new(token, repo, config) }
+    let(:report) { RspecSnitch::PendingReporter.new(token, repo, config) }
 
     context 'reportable examples present and user wants report' do
       it 'should send one issue to github' do

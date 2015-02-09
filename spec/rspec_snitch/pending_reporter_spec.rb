@@ -57,6 +57,8 @@ describe RspecSnitch::PendingReporter do
     end
 
     context 'user does not want report' do
+      before(:each) { allow_any_instance_of(RspecSnitch::PendingReporter).
+                      to receive(:user_wants_report?).and_return(false) }
       let(:snitch)   { RspecSnitch::PendingReporter.new config,
                       repository: 'example repo', ask: false,
                       access_token: 'exampletoken' }

@@ -10,4 +10,8 @@ module RspecSnitch
   def self.new(*args)
     PendingReporter.new(*args)
   end
+
+  def self.snitch_to(*args)
+    self.new(*args)
+  end
 end

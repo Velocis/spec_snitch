@@ -25,14 +25,13 @@ To get started, you'll only need two things:
 
 To get your access token, go to your [GitHub Settings > Applications](https://github.com/settings/applications), and under your "Personal Access Tokens" panel, click on "Generate new token". The default settings will work fine, but at the very least you'll need to have the "repo" scope enabled.
 
-RSpecSnitch uses environment variables so as to protect any API keys you don't want to push into your repo. You'll want to set `RSPEC_SNITCH_TOKEN` with the appropriate value, using `Dotenv`, `Figaro`, bash, what have you.
-
 Once you've done all that, simply add the following to your RSpec configuration:
 
 <pre>
 RSpec.configure do |config|
   config.after(:suite) do
-    RSpecSnitch.snitch_to([your repo name here], config, ask: false)
+    RSpecSnitch.snitch_to config, repository: [your repo name here],
+      access_token: [your access_token], ask: false
   end
 
   # other stuff...

@@ -13,7 +13,3 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'simplecov', require: false
 end
-
-group :test do
-  gem 'sinatra'
-end

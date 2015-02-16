@@ -1,23 +1,23 @@
 require 'spec_helper'
 
-describe RspecSnitch::PendingReporter do
+describe Snitch::PendingReporter do
   describe 'pending examples' do
     let(:config)   { instance_double "RSpec::Core::Configuration" }
     let(:reporter) { instance_double "RSpec::Core::Reporter",
                      pending_examples: examples }
     let(:service)  { instance_double "Octokit::Client",
                      list_issues: [], create_issue: true }
-    let(:snitch)   { RspecSnitch::PendingReporter.new config,
+    let(:snitch)   { Snitch::PendingReporter.new config,
                      repository: 'example repo', access_token: 'exampletoken' }
 
     before(:each) do
       config.instance_variable_set(:@reporter, reporter)
-      allow_any_instance_of(RspecSnitch::ExternalServiceAdapter).
+      allow_any_instance_of(Snitch::ExternalServiceAdapter).
         to receive(:new_service).and_return(service)
     end
 
     context 'user wants report' do
-      before(:each) { allow_any_instance_of(RspecSnitch::PendingReporter).
+      before(:each) { allow_any_instance_of(Snitch::PendingReporter).
                       to receive(:user_wants_report?).and_return(true) }
 
       context '2 pending examples ' do
@@ -57,9 +57,9 @@ describe RspecSnitch::PendingReporter do
     end
 
     context 'user does not want report' do
-      before(:each) { allow_any_instance_of(RspecSnitch::PendingReporter).
+      before(:each) { allow_any_instance_of(Snitch::PendingReporter).
                       to receive(:user_wants_report?).and_return(false) }
-      let(:snitch)   { RspecSnitch::PendingReporter.new config,
+      let(:snitch)   { Snitch::PendingReporter.new config,
                       repository: 'example repo', ask: false,
                       access_token: 'exampletoken' }
       let(:examples) { [double(pending?: true, full_description: 'first title',

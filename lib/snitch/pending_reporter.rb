@@ -1,4 +1,4 @@
-module RspecSnitch
+module Snitch
   class PendingReporter
 
     def initialize(config, options)

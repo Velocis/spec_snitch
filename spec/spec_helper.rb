@@ -1,6 +1,6 @@
 require 'simplecov'
 SimpleCov.start
-require 'rspec_snitch'
+require 'snitch'
 require 'vcr'
 require 'webmock/rspec'
 
